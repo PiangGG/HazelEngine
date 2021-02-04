@@ -1,3 +1,2 @@
-﻿  Application.cpp
-D:\Code\C++\HazelEngine\Sandbox\src\Application.cpp(9,1): warning C4326: “main”的返回类型应为“int”而非“void”
+﻿  SandboxApp.cpp
   Sandbox.vcxproj -> D:\Code\C++\HazelEngine\bin\Debug-x64\Sandbox\Sandbox.exe
