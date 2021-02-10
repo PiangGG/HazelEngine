@@ -5,7 +5,7 @@
       <UniqueIdentifier>{99294D0D-053E-75BE-CEBF-181E3A9371EF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Hazel\Events">
-      <UniqueIdentifier>{8c934192-5387-498c-90bc-929eca69c1ce}</UniqueIdentifier>
+      <UniqueIdentifier>{5DEF92FE-4952-22A3-F2D7-5A59DE19EE25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,13 +19,22 @@
     <ClInclude Include="src\Hazel\EntryPoint.h">
       <Filter>Hazel</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazel\Events\ApplicationEvent.h">
+      <Filter>Hazel\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazel\Events\Event.h">
+      <Filter>Hazel\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazel\Events\KeyEvnet.h">
+      <Filter>Hazel\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazel\Events\MouseEvent.h">
+      <Filter>Hazel\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazel\Log.h">
       <Filter>Hazel</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazel\Events\Event.h" />
-    <ClInclude Include="src\Hazel\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Hazel\Events\KeyEvnet.h" />
-    <ClInclude Include="src\Hazel\Events\MouseEvent.h" />
+    <ClInclude Include="src\hzpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazel\Application.cpp">
@@ -34,5 +43,6 @@
     <ClCompile Include="src\Hazel\Log.cpp">
       <Filter>Hazel</Filter>
     </ClCompile>
+    <ClCompile Include="src\hzpch.cpp" />
   </ItemGroup>
 </Project>
