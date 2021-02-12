@@ -17,8 +17,9 @@ namespace Hazel
 
 	class HAZEL_API KeyPressedEvnet :public KeyEvent 
 	{
-		KeyPressedEvnet(int keycode,int repeatCount):KeyEvent(keycode),m_RepeatCount(repeatCount) {	}
 	public:
+		KeyPressedEvnet(int keycode,int repeatCount):KeyEvent(keycode),m_RepeatCount(repeatCount) {	}
+	
 		inline int GetRepeatCount()const { return m_RepeatCount; }
 
 		std::string ToString()const override
@@ -35,8 +36,9 @@ namespace Hazel
 
 	class HAZEL_API KeyReleasedEvnet :public KeyEvent
 	{
-		KeyReleasedEvnet(int keycode) :KeyEvent(keycode) {	}
 	public:
+		KeyReleasedEvnet(int keycode) :KeyEvent(keycode) {	}
+	
 		inline int GetRepeatCount()const { return m_RepeatCount; }
 
 		std::string ToString()const override

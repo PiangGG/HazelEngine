@@ -9,6 +9,12 @@ workspace "HazelEngine"
 	}
 
 outputdir="%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+	
+--include directories relative to root folder (solution directory)
+IncludeDir ={}
+IncludeDir["GLFW"] ="HazelEngine/vendor/GLFW/include"
+
+include "HazelEngine/vendor/GLFW"
 
 project "HazelEngine"
 	location "HazelEngine"
@@ -29,13 +35,21 @@ project "HazelEngine"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include;"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+
+	}
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0"
+		systemversion "latest"
 		
 	defines
 	{
@@ -88,7 +102,7 @@ project "Sandbox"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0"
+		systemversion "latest"
 		
 	defines
 	{
