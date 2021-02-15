@@ -2,6 +2,7 @@
 #include "Hazel/Window.h"
 #include <GLFW/glfw3.h>
 
+struct GLFWwindow;
 namespace Hazel 
 {
 	class WindowsWindow :public Window
