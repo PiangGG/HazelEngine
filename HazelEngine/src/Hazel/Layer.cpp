@@ -7,9 +7,4 @@ namespace Hazel
 	{
 		HZ_CORE_TRACE("InitLayer");
 	}
-
-	Layer ::~Layer()
-	{
-		
-	}
 }
