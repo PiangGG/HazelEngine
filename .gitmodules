@@ -1,0 +1,12 @@
+[submodule "Hazel/vendor/spdlog"]
+	path = Hazel/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "HazelEngine/vendor/spdlog"]
+	path = HazelEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "HazelEngine/vendor/GLFW"]
+	path = HazelEngine/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
+[submodule "HazelEngine/vendor/imgui_"]
+	path = HazelEngine/vendor/imgui_
+	url = https://github.com/TheCherno/imgui
