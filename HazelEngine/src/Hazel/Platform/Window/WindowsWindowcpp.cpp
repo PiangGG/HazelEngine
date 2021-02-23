@@ -48,7 +48,7 @@ namespace Hazel
 		glfwMakeContextCurrent(m_Window);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		//HZ_CORE_ASSERT(status,"Failed to initailze Glad");
+		
 		SetVSync(true);
 
 		//Set GLEW callbacks

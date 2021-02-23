@@ -9,12 +9,20 @@ public :
 	}
 	void OnUpdate()override
 	{
-
+	
 	}
 
 	void OnEvent(Hazel::Event& event) override
 	{
-		HZ_CORE_TRACE("{0}",event);
+		if (Hazel::Input::IsKeyPressed(HZ_KEY_TAB))
+		{
+			HZ_CORE_INFO("TAB KEY IS PRESSED");
+		}
+		if (event.GetEventType()==Hazel::EventType::KeyPressed)
+		{
+			Hazel::KeyPressedEvnet& e = (Hazel::KeyPressedEvnet&)event;
+			HZ_CORE_TRACE("{0}",(char)e.GetKeyCode());
+		}
 	}
 };
 

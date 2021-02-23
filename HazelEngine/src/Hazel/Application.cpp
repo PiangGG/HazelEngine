@@ -12,7 +12,6 @@ namespace Hazel {
 	Application* Application::s_Instance = nullptr;
 	Application::Application()
 	{
-		//HZ_CORE_ASSERT(!s_Instance,"Application already exists!");
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Window::Create());
@@ -40,7 +39,8 @@ namespace Hazel {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowcloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		HZ_CORE_TRACE("{0}",e);
+		
+		//HZ_CORE_TRACE("{0}",e);
 
 		/*for (auto it=m_LayerStack.end(); it!=m_LayerStack.begin();)
 		{
@@ -63,7 +63,6 @@ namespace Hazel {
 	}
 	void Application::Run()
 	{
-		//HZ_TRACE(e);
 		while (m_Runing) 
 		{
 			glClearColor(1, 0, 1, 1);
@@ -74,8 +73,6 @@ namespace Hazel {
 				layer->OnUpdate();
 			}
 			auto [x, y] = Input::GetMousePosition();
-			HZ_CORE_TRACE("{0},{1}",x,y);
-			//HZ_CORE_TRACE("m_LayerStack.Count():{0}", m_LayerStack.m_Layers.size());
 			
 			m_Window->OnUpdate();
 		}
