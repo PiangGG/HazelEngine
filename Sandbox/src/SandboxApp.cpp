@@ -5,7 +5,7 @@ class ExampleLayer : public Hazel::Layer
 public :
 	ExampleLayer() :Layer("Example") 
 	{
-		HZ_CORE_INFO("ExampleLayer::ExampleLayer");
+		
 	}
 	void OnUpdate()override
 	{
