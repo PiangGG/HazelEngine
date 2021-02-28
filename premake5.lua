@@ -107,8 +107,9 @@ project "Sandbox"
 
 	includedirs
 	{
-		"HazelEngine/vendor/spdlog/include;",
+		"HazelEngine/vendor/spdlog/include",
 		"HazelEngine/src",
+		"HazelEngine/vendor",
 		"%{IncludeDir.glm}"
 	}
 	
