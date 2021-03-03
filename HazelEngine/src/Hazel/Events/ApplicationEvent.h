@@ -4,7 +4,7 @@
 
 namespace Hazel 
 {
-	class HAZEL_API WindowResizeEvnet : public Event 
+	class  WindowResizeEvnet : public Event 
 	{
 	public:
 		WindowResizeEvnet(unsigned int width, unsigned int height) 
@@ -26,7 +26,7 @@ namespace Hazel
 		unsigned int m_width,m_height;
 	};
 
-	class HAZEL_API WindowcloseEvent :public Event 
+	class  WindowcloseEvent :public Event 
 	{
 	public:
 		WindowcloseEvent() {};
@@ -35,7 +35,7 @@ namespace Hazel
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class HAZEL_API AppTickEvent :public Event 
+	class  AppTickEvent :public Event 
 	{
 	public:
 		AppTickEvent() {};
@@ -44,7 +44,7 @@ namespace Hazel
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class HAZEL_API AppUpdateEvent :public Event
+	class  AppUpdateEvent :public Event
 	{
 	public:
 		AppUpdateEvent() {};
@@ -53,7 +53,7 @@ namespace Hazel
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class HAZEL_API AppRenderEvent :public Event
+	class  AppRenderEvent :public Event
 	{
 	public:
 		AppRenderEvent() {};

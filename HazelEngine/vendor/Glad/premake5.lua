@@ -1,6 +1,7 @@
 project "Glad"
 	kind "StaticLib"
 	language "C"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -20,14 +21,11 @@ project "Glad"
 
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
-
+	
 	filter "configurations:Debug"
 		runtime "Debug"
-		buildoptions "/MT"
 		symbols "on"
 
 	filter "configurations:Release"
 		runtime "Release"
-		buildoptions "/MT"
 		optimize "on"
