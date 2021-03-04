@@ -40,6 +40,12 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Hazel\Renderer">
+      <UniqueIdentifier>{bc84cfb8-82b2-4d97-bb1d-3859c093f087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Hazel\Platform\OpenGL">
+      <UniqueIdentifier>{472fc03a-12db-491a-93a3-dc97730dfd22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Hazel.h">
@@ -1338,6 +1344,12 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Hazel\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazel\Renderer\GraphicsContext.h">
+      <Filter>src\Hazel\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazel\Application.cpp">
@@ -1366,6 +1378,9 @@
     </ClCompile>
     <ClCompile Include="src\hzpch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Hazel\Platform\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
