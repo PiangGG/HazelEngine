@@ -14,7 +14,6 @@ namespace Hazel
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		HZ_CORE_TRACE(" LayerStack::PushOverlay,emplace_back");
 		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
 		m_LayerInsertIndex++;
 	}

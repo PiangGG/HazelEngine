@@ -43,7 +43,7 @@ namespace Hazel
 		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();
-			//HZ_CORE_ASSERT(success,"Could not intialize GLFW!");
+		
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
