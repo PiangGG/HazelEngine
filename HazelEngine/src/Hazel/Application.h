@@ -7,6 +7,8 @@
 #include "LayerStack.h"
 
 #include "ImGui/ImGuiLayer.h"
+
+#include "Hazel/Renderer/Shader.h"
 namespace Hazel {
 
 	//这样会自动产生 .lib文件和 .dll文件的
@@ -38,6 +40,7 @@ namespace Hazel {
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
