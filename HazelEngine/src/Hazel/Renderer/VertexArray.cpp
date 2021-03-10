@@ -9,8 +9,8 @@ namespace Hazel
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:HZ_CORE_ERROR("RendererAPI::None return nullptr"); return nullptr;
-			case RendererAPI::OpenGL:return new OpenGLVertexArray();
+			case RendererAPI::API::None:HZ_CORE_ERROR("RendererAPI::None return nullptr"); return nullptr;
+			case RendererAPI::API::OpenGL:return new OpenGLVertexArray();
 		}
 		HZ_CORE_ERROR("Unkown RenderAPI");
 		return nullptr;

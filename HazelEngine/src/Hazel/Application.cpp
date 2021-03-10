@@ -2,7 +2,7 @@
 #include "Application.h" 
 #include "Events/ApplicationEvent.h"
 #include "Log.h"
-#include <glad/glad.h>
+#include "Renderer/Renderer.h"
 #include "Input.h"
 #include "glm/glm.hpp"
 
@@ -178,19 +178,21 @@ namespace Hazel {
 	}
 	void Application::Run()
 	{
-		while (m_Runing) 
+		while (m_Runing)
 		{
-			glClearColor(0.1f, 0.1f,0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1});
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-			
+			Renderer::Submit(m_SquareVA);
+
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-			
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
+		
 			for (Layer* layer:m_LayerStack) 
 			{
 				layer->OnUpdate();
