@@ -12,6 +12,8 @@
 #include "Hazel/Renderer/Buffer.h"
 #include "Hazel/Renderer/VertexArray.h"
 
+#include "Hazel/Renderer/OrthographicCamera.h"
+
 namespace Hazel {
 
 	//这样会自动产生 .lib文件和 .dll文件的
@@ -47,6 +49,9 @@ namespace Hazel {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
+		float cf=0.05f;
 	private:
 		static Application* s_Instance;
 	};
