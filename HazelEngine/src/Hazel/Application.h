@@ -8,16 +8,10 @@
 
 #include "ImGui/ImGuiLayer.h"
 
-#include "Hazel/Renderer/Shader.h"
-#include "Hazel/Renderer/Buffer.h"
-#include "Hazel/Renderer/VertexArray.h"
-
-#include "Hazel/Renderer/OrthographicCamera.h"
-
 namespace Hazel {
 
 	//这样会自动产生 .lib文件和 .dll文件的
-	class HAZEL_API Application
+	class  Application
 	{
 
 	public:
@@ -44,14 +38,6 @@ namespace Hazel {
 
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
-		float cf=0.05f;
 	private:
 		static Application* s_Instance;
 	};
