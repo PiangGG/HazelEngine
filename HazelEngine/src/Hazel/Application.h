@@ -7,6 +7,7 @@
 #include "LayerStack.h"
 
 #include "ImGui/ImGuiLayer.h"
+#include "Hazel/Core/Timestep.h"
 
 namespace Hazel {
 
@@ -30,14 +31,14 @@ namespace Hazel {
 		inline static Application& Get() {	return *s_Instance;}
 		inline Window& GetWindow() { return *m_Window; }
 	private:
-
 		bool OnWindowClose(WindowcloseEvent& e);
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Runing = true;
-
 		LayerStack m_LayerStack;
-
+		Timestep m_Timestep;
+		float m_LastFramTime=0.0f;
 	private:
 		static Application* s_Instance;
 	};

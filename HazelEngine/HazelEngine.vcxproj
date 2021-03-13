@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Hazel\Core\Timestep.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLVertexArray.h" />

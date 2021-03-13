@@ -5,7 +5,7 @@
 #include "Renderer/Renderer.h"
 #include "Input.h"
 #include "glm/glm.hpp"
-
+#include <glfw/glfw3.h>
 
 namespace Hazel {
 
@@ -20,6 +20,7 @@ namespace Hazel {
 
 		m_Window = std::unique_ptr<Window>(Window::Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window->SetVSync(false);
 
 		m_ImGuiLayer = new ImGuiLayer();
 
@@ -47,20 +48,6 @@ namespace Hazel {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowcloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		
-	
-		/*if (e.GetEventType() == EventType::MouseScrolled)
-		{
-			MouseScrolledEvent* the = dynamic_cast<MouseScrolledEvent*>(&e);
-			HZ_CORE_TRACE("{0}", e);
-			m_Camera.SetPosition({cf+=the->GetYOffset()/10, cf+=the->GetYOffset()/10, 0.0f});
-		}*/
-		
-		/*for (auto it=m_LayerStack.end(); it!=m_LayerStack.begin();)
-		{
-			(*--it)->OnEvent(e);
-			if (e.Handled)
-				break;
-		}*/
 		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
 			if (e.Handled)
@@ -78,10 +65,13 @@ namespace Hazel {
 	{
 		while (m_Runing)
 		{
-		
+			float time = (float)glfwGetTime(); //Platform::GetTime()
+			Timestep timestep = time - m_LastFramTime;
+			m_LastFramTime = time;
+
 			for (Layer* layer:m_LayerStack) 
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

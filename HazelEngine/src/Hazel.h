@@ -6,6 +6,8 @@
 #include "Hazel/Log.h"
 #include "Hazel/ImGui/ImGuiLayer.h"
 
+#include "Hazel/Core/Timestep.h"
+
 //---Renderer------------------
 #include "Hazel/Renderer/Renderer.h"
 #include "Hazel/Renderer/RenderCommand.h"
