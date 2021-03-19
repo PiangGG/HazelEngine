@@ -16,6 +16,7 @@ IncludeDir["GLFW"] ="HazelEngine/vendor/GLFW/include"
 IncludeDir["Glad"] ="HazelEngine/vendor/Glad/include"
 IncludeDir["ImGui"] ="HazelEngine/vendor/imgui"
 IncludeDir["glm"] ="HazelEngine/vendor/glm"
+IncludeDir["stb_image"] ="HazelEngine/vendor/stb_image"
 
 include "HazelEngine/vendor/GLFW"
 include "HazelEngine/vendor/Glad"
@@ -38,6 +39,8 @@ project "HazelEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -53,7 +56,8 @@ project "HazelEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 
 	}
 	links
