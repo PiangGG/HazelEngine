@@ -14,6 +14,7 @@ namespace Hazel
 		if (type == "fragment"||"pixel")
 			return GL_FRAGMENT_SHADER;
 
+		HZ_CORE_ERROR("Unknown shader type!");
 		return 0;
 	}
 	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
@@ -21,7 +22,6 @@ namespace Hazel
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
 		sources[GL_FRAGMENT_SHADER] = fragmentSrc;
-
 		Compile(sources);
 	}
 
@@ -112,6 +112,7 @@ namespace Hazel
 			//HZ_CORE_ERROR("Syntax error{0}", pos != std::string::npos);
 			size_t begin = pos + typeTokenLength + 1;
 			std::string type = source.substr(begin, eol - begin);
+			//HZ_CORE_ERROR( "Invalid shader type specified{0}", ShaderTypeFromString(type));
 
 			size_t nextLinePos= source.find_first_not_of("\r\n", eol);
 			pos = source.find(typeToken, nextLinePos);
@@ -155,6 +156,8 @@ namespace Hazel
 			glAttachShader(program, shader);
 			glShaderIDs.push_back(shader);
 		}
+
+		m_RendererID = program;
 
 		// Link our program
 		glLinkProgram(program);
