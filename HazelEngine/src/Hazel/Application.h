@@ -32,10 +32,12 @@ namespace Hazel {
 		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowcloseEvent& e);
+		bool OnWindowResize(WindowResizeEvnet& e);
 	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Runing = true;
+		bool m_Minimized = false;
 		LayerStack m_LayerStack;
 		Timestep m_Timestep;
 		float m_LastFramTime=0.0f;
