@@ -1,8 +1,8 @@
 #include "hzpch.h"
 #include "Application.h" 
-#include "Events/ApplicationEvent.h"
+#include "Hazel/Events/ApplicationEvent.h"
 #include "Log.h"
-#include "Renderer/Renderer.h"
+#include "Hazel/Renderer/Renderer.h"
 #include "Input.h"
 #include "glm/glm.hpp"
 #include <glfw/glfw3.h>
