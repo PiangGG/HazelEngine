@@ -1,8 +1,10 @@
 #include <Hazel.h>
+#include <Hazel/Core/EntryPoint.h>
 #include "imgui/imgui.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include "Hazel/Platform/OpenGL/OpenGLShader.h"
 #include <glm/gtc/type_ptr.hpp>
+#include "Sandbox2D.h"
 
 class ExampleLayer : public Hazel::Layer 
 {
@@ -12,7 +14,7 @@ public :
 		, m_CameraController(1280.0f / 720.0f,true)
 	{
 		//Vertex Array
-		m_VertexArray.reset(Hazel::VertexArray::Create());
+		m_VertexArray= Hazel::VertexArray::Create();
 
 		//Vertex Buffer
 
@@ -38,7 +40,7 @@ public :
 		indexBuffer.reset(Hazel::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(Hazel::VertexArray::Create());
+		m_SquareVA=Hazel::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -141,8 +143,7 @@ public :
 		
 		std::dynamic_pointer_cast<Hazel::OpenGLShader>(textureShader)->Bind();
 		std::dynamic_pointer_cast<Hazel::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
-		
-	}
+}
 	void OnUpdate(Hazel::Timestep ts)override
 	{
 		//update
@@ -216,8 +217,8 @@ class Sandbox :public Hazel::Application
 public:
 	Sandbox() 
 	{
-		PushLayer(new ExampleLayer());
-		
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 	~Sandbox() 
 	{
