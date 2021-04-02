@@ -143,9 +143,9 @@
     <ClInclude Include="src\Sandbox2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Hazel\Sandbox\assets\shaders\FlatColor.glsl" />
     <None Include="assets\shader\FlatColor.glsl" />
     <None Include="assets\shader\Texture.glsl" />
+    <None Include="assets\shader\FlatColor1.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
