@@ -1,6 +1,7 @@
 #include "hzpch.h"
-#include "VertexArray.h"
-#include "Renderer.h"
+#include "Hazel/Renderer/Shader.h"
+
+#include "Hazel/Renderer/Renderer.h"
 #include "Hazel/Platform/OpenGL/OpenGLShader.h"
 
 namespace Hazel
@@ -10,7 +11,7 @@ namespace Hazel
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:HZ_CORE_ERROR("RendererAPI::None return nullptr"); return nullptr;
-			case RendererAPI::API::OpenGL:return std::make_shared<OpenGLShader>(name,vertexSrc, fragmentSrc);
+			case RendererAPI::API::OpenGL:return CreateRef<OpenGLShader>(name,vertexSrc, fragmentSrc);
 		}
 		HZ_CORE_ERROR("Unkown RenderAPI");
 		return nullptr;
@@ -20,7 +21,7 @@ namespace Hazel
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:HZ_CORE_ERROR("RendererAPI::None return nullptr"); return nullptr;
-		case RendererAPI::API::OpenGL:return std::make_shared<OpenGLShader>(filepath);
+		case RendererAPI::API::OpenGL:return CreateRef<OpenGLShader>(filepath);
 		}
 		HZ_CORE_ERROR("Unkown RenderAPI");
 		return nullptr;
