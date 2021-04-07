@@ -90,7 +90,7 @@ namespace Hazel {
 		while (m_Runing)
 		{
 			HZ_PROFILE_SCOPE("RunLoop");
-
+			
 			float time = (float)glfwGetTime(); //Platform::GetTime()
 			Timestep timestep = time - m_LastFramTime;
 			m_LastFramTime = time;
@@ -114,7 +114,6 @@ namespace Hazel {
 						layer->OnImGuiRender();
 					}
 				}
-				
 				m_ImGuiLayer->End();
 			}
 			m_Window->OnUpdate();
