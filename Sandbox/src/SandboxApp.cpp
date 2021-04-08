@@ -58,8 +58,8 @@ public :
 
 		//uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Hazel::Ref<Hazel::IndexBuffer> squareIB = Hazel::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
-		m_SquareVA->SetIndexBuffer(squareIB);
+		Hazel::Ref<Hazel::IndexBuffer> quadIB = Hazel::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
+		m_SquareVA->SetIndexBuffer(quadIB);
 
 
 		std::string vectexSrc = R"(
