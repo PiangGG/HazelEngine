@@ -65,9 +65,14 @@ namespace Hazel {
 		}
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	bool Application::OnWindowClose(WindowcloseEvent& e)
 	{
-		m_Runing = false;
+		m_Running = false;
 		return true;
 	}
 	bool Application::OnWindowResize(WindowResizeEvnet& e)
@@ -87,7 +92,7 @@ namespace Hazel {
 	{
 		HZ_PROFILE_FUNCTION();
 
-		while (m_Runing)
+		while (m_Running)
 		{
 			HZ_PROFILE_SCOPE("RunLoop");
 			
