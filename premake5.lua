@@ -17,10 +17,11 @@ IncludeDir["Glad"] ="HazelEngine/vendor/Glad/include"
 IncludeDir["ImGui"] ="HazelEngine/vendor/imgui"
 IncludeDir["glm"] ="HazelEngine/vendor/glm"
 IncludeDir["stb_image"] ="HazelEngine/vendor/stb_image"
-
-include "HazelEngine/vendor/GLFW"
-include "HazelEngine/vendor/Glad"
-include "HazelEngine/vendor/imgui"
+group "Dependencies"
+	include "HazelEngine/vendor/GLFW"
+	include "HazelEngine/vendor/Glad"
+	include "HazelEngine/vendor/imgui"
+group ""
 
 project "HazelEngine"
 	location "HazelEngine"
@@ -95,6 +96,58 @@ project "HazelEngine"
 
 project "Sandbox"
 	location "Sandbox"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" ..outputdir.. "/%{prj.name}")
+	objdir ("bin-int/" ..outputdir.. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"HazelEngine/vendor/spdlog/include",
+		"HazelEngine/src",
+		"HazelEngine/vendor",
+		"%{IncludeDir.glm}"
+	}
+	
+	links
+	{
+		"HazelEngine"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		
+	defines
+	{
+		"HZ_PLATFORM_WINDOWS",
+	}
+
+	filter "configurations:Debug"
+		defines "HZ_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "HZ_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "HZ_DIST"
+		runtime "Release"
+		optimize "on"
+
+project "HazelEngine-Editor"
+	location "HazelEngine-Editor"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"

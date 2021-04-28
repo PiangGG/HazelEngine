@@ -140,13 +140,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Hazel\Core\Assert.h" />
-    <ClInclude Include="src\Hazel\Core\Base.h" />
-    <ClInclude Include="src\Hazel\Core\PlatformDetection.h" />
-    <ClInclude Include="src\Hazel\Renderer\Framebuffer.h" />
-    <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Hazel.h" />
     <ClInclude Include="src\Hazel\Core\Application.h" />
+    <ClInclude Include="src\Hazel\Core\Assert.h" />
+    <ClInclude Include="src\Hazel\Core\Base.h" />
     <ClInclude Include="src\Hazel\Core\EntryPoint.h" />
     <ClInclude Include="src\Hazel\Core\Input.h" />
     <ClInclude Include="src\Hazel\Core\KeyCodes.h" />
@@ -154,6 +151,7 @@
     <ClInclude Include="src\Hazel\Core\LayerStack.h" />
     <ClInclude Include="src\Hazel\Core\Log.h" />
     <ClInclude Include="src\Hazel\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Hazel\Core\PlatformDetection.h" />
     <ClInclude Include="src\Hazel\Core\Timestep.h" />
     <ClInclude Include="src\Hazel\Core\Window.h" />
     <ClInclude Include="src\Hazel\Debug\Instrumentor.h" />
@@ -164,6 +162,7 @@
     <ClInclude Include="src\Hazel\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLTexture.h" />
@@ -171,6 +170,7 @@
     <ClInclude Include="src\Hazel\Platform\Window\WindowsInput.h" />
     <ClInclude Include="src\Hazel\Platform\Window\WindowsWindow.h" />
     <ClInclude Include="src\Hazel\Renderer\Buffer.h" />
+    <ClInclude Include="src\Hazel\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Hazel\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Hazel\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Hazel\Renderer\OrthographicCameraController.h" />
@@ -599,8 +599,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Hazel\Renderer\Framebuffer.cpp" />
-    <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Hazel\Core\Application.cpp" />
     <ClCompile Include="src\Hazel\Core\Layer.cpp" />
     <ClCompile Include="src\Hazel\Core\LayerStack.cpp" />
@@ -609,6 +607,7 @@
     <ClCompile Include="src\Hazel\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLTexture.cpp" />
@@ -616,6 +615,7 @@
     <ClCompile Include="src\Hazel\Platform\Window\WindowsInput.cpp" />
     <ClCompile Include="src\Hazel\Platform\Window\WindowsWindowcpp.cpp" />
     <ClCompile Include="src\Hazel\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Hazel\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Hazel\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Hazel\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Hazel\Renderer\OrthographicCameraController.cpp" />

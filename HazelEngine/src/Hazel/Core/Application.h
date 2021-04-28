@@ -17,7 +17,7 @@ namespace Hazel {
 
 	public:
 
-		Application();
+		Application(const std::string& name="HazelApp");
 
 		virtual ~Application();
 

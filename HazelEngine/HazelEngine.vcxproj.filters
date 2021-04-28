@@ -63,6 +63,12 @@
     <ClInclude Include="src\Hazel\Core\Application.h">
       <Filter>src\Hazel\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazel\Core\Assert.h">
+      <Filter>src\Hazel\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazel\Core\Base.h">
+      <Filter>src\Hazel\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazel\Core\EntryPoint.h">
       <Filter>src\Hazel\Core</Filter>
     </ClInclude>
@@ -82,6 +88,9 @@
       <Filter>src\Hazel\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazel\Core\MouseButtonCodes.h">
+      <Filter>src\Hazel\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazel\Core\PlatformDetection.h">
       <Filter>src\Hazel\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazel\Core\Timestep.h">
@@ -114,6 +123,9 @@
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Hazel\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>src\Hazel\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Hazel\Platform\OpenGL</Filter>
     </ClInclude>
@@ -133,6 +145,9 @@
       <Filter>src\Hazel\Platform\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazel\Renderer\Buffer.h">
+      <Filter>src\Hazel\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazel\Renderer\Framebuffer.h">
       <Filter>src\Hazel\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazel\Renderer\GraphicsContext.h">
@@ -1413,15 +1428,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazel\Renderer\Framebuffer.h">
-      <Filter>src\Hazel\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.h">
-      <Filter>src\Hazel\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazel\Core\Assert.h" />
-    <ClInclude Include="src\Hazel\Core\Base.h" />
-    <ClInclude Include="src\Hazel\Core\PlatformDetection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazel\Core\Application.cpp">
@@ -1448,6 +1454,9 @@
     <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Hazel\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.cpp">
+      <Filter>src\Hazel\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\Hazel\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1467,6 +1476,9 @@
       <Filter>src\Hazel\Platform\Window</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazel\Renderer\Buffer.cpp">
+      <Filter>src\Hazel\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazel\Renderer\Framebuffer.cpp">
       <Filter>src\Hazel\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazel\Renderer\GraphicsContext.cpp">
@@ -1507,12 +1519,6 @@
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hazel\Renderer\Framebuffer.cpp">
-      <Filter>src\Hazel\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hazel\Platform\OpenGL\OpenGLFramebuffer.cpp">
-      <Filter>src\Hazel\Platform\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
