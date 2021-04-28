@@ -14,18 +14,11 @@ void Sandbox2D::OnAttach()
 {
 	HZ_PROFILE_FUNCTION();
 	m_CheckerboardTexture = Hazel::Texture2D::Create("assets/textures/Checkerboard.png");
-	m_SpriteSheet = Hazel::Texture2D::Create("assets/game/textures/Preview_KenneyNL.png");
-
-	m_TextureStairs = Hazel::SubTexture2D::CreateFromCoords(m_SpriteSheet,{7,6}, {128,128});
-
-	// Init here
-	m_Particle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
-	m_Particle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
-	m_Particle.SizeBegin = 0.5f, m_Particle.SizeVariation = 0.3f, m_Particle.SizeEnd = 0.0f;
-	m_Particle.LifeTime = 1.0f;
-	m_Particle.Velocity = { 0.0f, 0.0f };
-	m_Particle.VelocityVariation = { 3.0f, 1.0f };
-	m_Particle.Position = { 0.0f, 0.0f };
+	
+	Hazel::FramebufferSpecification fbSpec;
+	fbSpec.Width = 1280;
+	fbSpec.Height = 720;
+	m_Framebuffer = Hazel::Framebuffer::Create(fbSpec);
 }
 
 void Sandbox2D::OnDetach()
@@ -44,7 +37,7 @@ void Sandbox2D::OnUpdate(Hazel::Timestep ts)
 	Hazel::Renderer2D::ResetStats();
 	{
 		HZ_PROFILE_SCOPE("Renderer Prep");
-		
+		m_Framebuffer->Bind();
 		Hazel::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f,1 });
 		Hazel::RenderCommand::Clear();
 	}
@@ -71,42 +64,14 @@ void Sandbox2D::OnUpdate(Hazel::Timestep ts)
 			}
 		}
 		Hazel::Renderer2D::EndScene();
-		
+		m_Framebuffer->Unbind();
 	}
-	
-
-	if (Hazel::Input::IsMouseButtonPressed(HZ_MOUSE_BUTTON_LEFT))
-	{
-		auto [x, y] = Hazel::Input::GetMousePosition();
-		auto width = Hazel::Application::Get().GetWindow().GetWidth();
-		auto height = Hazel::Application::Get().GetWindow().GetHeight();
-
-		auto bounds = m_CameraController.GetBounds();
-		auto pos = m_CameraController.GetCamera().GetPosition();
-		x = (x / width) * bounds.GetWidth() - bounds.GetWidth() * 0.5f;
-		y = bounds.GetHeight() * 0.5f - (y / height) * bounds.GetHeight();
-		m_Particle.Position = { x + pos.x, y + pos.y };
-
-		m_Particle.ColorBegin = { 1.0f,0.0f,0.0f,0.3f };
-		m_Particle.ColorEnd = { 0.0f,0.0f,1.0f,0.8f };
-		m_Particle.LifeTime = 10.0f;
-
-		for (int i = 0; i < 5; i++)
-			m_ParticleSystem.Emit(m_Particle);
-	}
-
-	m_ParticleSystem.OnUpdate(ts);
-	m_ParticleSystem.OnRender(m_CameraController.GetCamera());
-
-	Hazel::Renderer2D::BeginScene(m_CameraController.GetCamera());
-	Hazel::Renderer2D::DrawQuad({ 0.0f,0.0f,0.5f }, { 1.0f, 1.0f }, m_TextureStairs);
-	Hazel::Renderer2D::EndScene();
 }
 
 void Sandbox2D::OnImGuiRender()
 {
 	// Note: Switch this to true to enable dockspace
-	static bool dockingEnabled = false;
+	static bool dockingEnabled = true;
 	if (dockingEnabled)
 	{
 		static bool dockspaceOpen = true;
@@ -179,8 +144,8 @@ void Sandbox2D::OnImGuiRender()
 
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
-		uint32_t textureID = m_CheckerboardTexture->GetRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 256.0f, 256.0f });
+		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
+		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 });
 		ImGui::End();
 
 		ImGui::End();
@@ -199,7 +164,7 @@ void Sandbox2D::OnImGuiRender()
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
 		uint32_t textureID = m_CheckerboardTexture->GetRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 256.0f, 256.0f });
+		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 });
 		ImGui::End();
 	}
 }
