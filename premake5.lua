@@ -1,5 +1,5 @@
 workspace "HazelEngine"
-	architecture "x86_x64"
+	architecture "x86_64"
 	startproject "HazelEnginenut"
 
 	configurations
@@ -7,6 +7,11 @@ workspace "HazelEngine"
 		"Debug",
 		"Release",
 		"Dist"
+	}
+
+	flags
+	{
+		"MultiProcessorCompile"
 	}
 
 outputdir="%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -18,6 +23,9 @@ IncludeDir["Glad"] ="HazelEngine/vendor/Glad/include"
 IncludeDir["ImGui"] ="HazelEngine/vendor/imgui"
 IncludeDir["glm"] ="HazelEngine/vendor/glm"
 IncludeDir["stb_image"] ="HazelEngine/vendor/stb_image"
+IncludeDir["entt"] ="HazelEngine/vendor/entt/include"
+
+
 group "Dependencies"
 	include "HazelEngine/vendor/GLFW"
 	include "HazelEngine/vendor/Glad"
@@ -44,7 +52,7 @@ project "HazelEngine"
 		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 	defines
 	{
@@ -59,7 +67,8 @@ project "HazelEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 
 	}
 	links
@@ -116,7 +125,8 @@ project "Sandbox"
 		"HazelEngine/vendor/spdlog/include",
 		"HazelEngine/src",
 		"HazelEngine/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 	
 	links
@@ -168,7 +178,8 @@ project "HazelEnginenut"
 		"HazelEngine/vendor/spdlog/include",
 		"HazelEngine/src",
 		"HazelEngine/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 	
 	links

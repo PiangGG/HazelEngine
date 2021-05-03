@@ -33,6 +33,8 @@ namespace Hazel
 			m_Camera.SetRotation(m_CameraRotation);
 		}
 		
+		//
+
 		m_Camera.SetPosition(m_CameraPosition);
 		m_CameraTranslationSpeed = m_ZoomLevel;
 	}
@@ -43,13 +45,16 @@ namespace Hazel
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(HZ_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvnet>(HZ_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
+
+		dispatcher.Dispatch<MouseButtonPressedEvent>(HZ_BIND_EVENT_FN(OrthographicCameraController::OnMouseButtonPresseded));
+		dispatcher.Dispatch<MouseButtonReleasedEvent>(HZ_BIND_EVENT_FN(OrthographicCameraController::OnMouseButtonReleaseded));
+		dispatcher.Dispatch<MouseMovedEvent>(HZ_BIND_EVENT_FN(OrthographicCameraController::OnMouseMovedCameraController));
 	}
 	void OrthographicCameraController::OnResize(float width, float height)
 	{
 		m_AspectRatio = width / height;
 		m_Bounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
 		m_Camera.SetProjection(m_Bounds.Left, m_Bounds.Right, m_Bounds.Bottom, m_Bounds.Top);
-
 	}
 	bool OrthographicCameraController::OnMouseScrolled(Hazel::MouseScrolledEvent& e)
 	{
@@ -66,6 +71,26 @@ namespace Hazel
 		HZ_PROFILE_FUNCTION();
 
 		OnResize((float)e.GetWidth(),(float)e.GetHeight());
+		return false;
+	}
+	bool OrthographicCameraController::OnMouseButtonReleaseded(Hazel::MouseButtonReleasedEvent& e)
+	{
+		MouseLeftButtonPressed = false;
+		return false;
+	}
+	bool OrthographicCameraController::OnMouseMovedCameraController(Hazel::MouseMovedEvent& e)
+	{
+		if (MouseLeftButtonPressed)
+		{
+			//m_CameraPosition.x += (m_Bounds.GetWidth());
+			//m_CameraPosition.y += (m_Bounds.GetHeight());
+			//HZ_CORE_INFO("{0}{1}", m_CameraPosition.x, m_CameraPosition.y);
+		}
+		return false;
+	}
+	bool OrthographicCameraController::OnMouseButtonPresseded(Hazel::MouseButtonPressedEvent& e)
+	{
+		MouseLeftButtonPressed = true;
 		return false;
 	}
 }
