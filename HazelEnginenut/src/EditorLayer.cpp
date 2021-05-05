@@ -36,6 +36,35 @@ namespace Hazel
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		cc.Primary = false;
 		
+
+		class CameraController : public ScriptableEntity
+		{
+		public:
+			void OnCreate()
+			{
+			}
+
+			void OnDestroy()
+			{
+			}
+
+			void OnUpdate(Timestep ts)
+			{
+				auto& transform = GetComponent<TransformComponent>().Transform;
+				float speed = 5.0f;
+
+				if (Input::IsKeyPressed(HZ_KEY_A))
+					transform[3][0] -= speed * ts;
+				if (Input::IsKeyPressed(HZ_KEY_D))
+					transform[3][0] += speed * ts;
+				if (Input::IsKeyPressed(HZ_KEY_W))
+					transform[3][1] += speed * ts;
+				if (Input::IsKeyPressed(HZ_KEY_S))
+					transform[3][1] -= speed * ts;
+			}
+		};
+
+		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 	}
 
 	void EditorLayer::OnDetach()
@@ -47,9 +76,9 @@ namespace Hazel
 	{
 		HZ_PROFILE_FUNCTION();
 		// Resize
-		if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
-			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
-			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
+		//if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
+			//m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
+			//(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
